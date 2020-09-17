@@ -13,7 +13,7 @@ class CreateHessamUploadedPhotosTable extends Migration
      */
     public function up()
     {
-        Schema::create('blog_etc_uploaded_photos', function (Blueprint $table) {
+        Schema::create('hessam_uploaded_photos', function (Blueprint $table) {
             $table->increments('id');
             $table->text("uploaded_images")->nullable();
             $table->string("image_title")->nullable();
@@ -21,7 +21,7 @@ class CreateHessamUploadedPhotosTable extends Migration
             $table->unsignedInteger("uploader_id")->nullable()->index();
             $table->timestamps();
         });
-        Schema::table("blog_etc_posts",function(Blueprint $table) {
+        Schema::table("hessam_posts",function(Blueprint $table) {
             $table->string("seo_title")->nullable();
         });
     }
@@ -33,9 +33,9 @@ class CreateHessamUploadedPhotosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('blog_etc_uploaded_photos');
+        Schema::dropIfExists('hessam_uploaded_photos');
 
-        Schema::table("blog_etc_posts",function(Blueprint $table) {
+        Schema::table("hessam_posts",function(Blueprint $table) {
             $table->dropColumn("seo_title");
         });
     }

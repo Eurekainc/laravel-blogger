@@ -13,7 +13,7 @@ class CreateHessamPostsTable extends Migration
      */
     public function up()
     {
-        Schema::create('blog_etc_posts', function (Blueprint $table) {
+        Schema::create('hessam_posts', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger("user_id")->index()->nullable();
             $table->string("slug")->unique();
@@ -35,7 +35,7 @@ class CreateHessamPostsTable extends Migration
             $table->timestamps();
         });
 
-        Schema::create('blog_etc_categories', function (Blueprint $table) {
+        Schema::create('hessam_categories', function (Blueprint $table) {
             $table->increments('id');
 
             $table->string("category_name")->nullable();
@@ -47,22 +47,22 @@ class CreateHessamPostsTable extends Migration
             $table->timestamps();
         });
 
-        Schema::create('blog_etc_post_categories', function (Blueprint $table) {
+        Schema::create('hessam_post_categories', function (Blueprint $table) {
             $table->increments('id');
 
-            $table->unsignedInteger("blog_etc_post_id")->index();
-            $table->foreign('blog_etc_post_id')->references('id')->on('blog_etc_posts')->onDelete("cascade");
+            $table->unsignedInteger("hessam_post_id")->index();
+            $table->foreign('hessam_post_id')->references('id')->on('hessam_posts')->onDelete("cascade");
 
-            $table->unsignedInteger("blog_etc_category_id")->index();
-            $table->foreign('blog_etc_category_id')->references('id')->on('blog_etc_categories')->onDelete("cascade");
+            $table->unsignedInteger("hessam_category_id")->index();
+            $table->foreign('hessam_category_id')->references('id')->on('hessam_categories')->onDelete("cascade");
         });
 
 
-        Schema::create('blog_etc_comments', function (Blueprint $table) {
+        Schema::create('hessam_comments', function (Blueprint $table) {
             $table->increments('id');
 
-            $table->unsignedInteger("blog_etc_post_id")->index();
-            $table->foreign('blog_etc_post_id')->references('id')->on('blog_etc_posts')->onDelete("cascade");
+            $table->unsignedInteger("hessam_post_id")->index();
+            $table->foreign('hessam_post_id')->references('id')->on('hessam_posts')->onDelete("cascade");
             $table->unsignedInteger("user_id")->nullable()->index()->comment("if user was logged in");
 
             $table->string("ip")->nullable()->comment("if enabled in the config file");
@@ -85,8 +85,8 @@ class CreateHessamPostsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('blog_etc_post_categories');
-        Schema::dropIfExists('blog_etc_categories');
-        Schema::dropIfExists('blog_etc_posts');
+        Schema::dropIfExists('hessam_post_categories');
+        Schema::dropIfExists('hessam_categories');
+        Schema::dropIfExists('hessam_posts');
     }
 }

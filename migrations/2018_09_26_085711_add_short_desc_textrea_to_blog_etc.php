@@ -13,7 +13,7 @@ class AddShortDescTextreaToHessam extends Migration
      */
     public function up()
     {
-        Schema::table('blog_etc_posts', function (Blueprint $table) {
+        Schema::table('hessam_posts', function (Blueprint $table) {
             $table->text("short_description")->nullable();
         });
 
@@ -27,7 +27,7 @@ class AddShortDescTextreaToHessam extends Migration
     public function down()
     {
 
-        Schema::table('blog_etc_posts', function (Blueprint $table) {
+        Schema::table('hessam_posts', function (Blueprint $table) {
             $table->dropColumn("short_description");
         });
     }

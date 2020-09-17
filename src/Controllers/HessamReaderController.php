@@ -35,7 +35,7 @@ class HessamReaderController extends Controller
         if ($category_slug) {
             $category = HessamCategory::where("slug", $category_slug)->firstOrFail();
             $categoryChain = $category->getAncestorsAndSelf();
-            $posts = $category->posts()->where("blog_etc_post_categories.blog_etc_category_id", $category->id);
+            $posts = $category->posts()->where("hessam_post_categories.hessam_category_id", $category->id);
 
             // at the moment we handle this special case (viewing a category) by hard coding in the following two lines.
             // You can easily override this in the view files.

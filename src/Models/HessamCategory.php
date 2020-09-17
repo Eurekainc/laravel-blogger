@@ -22,7 +22,7 @@ class HessamCategory extends Node
      */
     public function posts()
     {
-        return $this->belongsToMany(HessamPost::class, 'blog_etc_post_categories');
+        return $this->belongsToMany(HessamPost::class, 'hessam_post_categories');
     }
 
     /**

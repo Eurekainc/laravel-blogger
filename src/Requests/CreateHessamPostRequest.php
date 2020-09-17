@@ -20,7 +20,7 @@ class CreateHessamPostRequest extends BaseHessamPostRequest
     public function rules()
     {
         $return = $this->baseBlogPostRules();
-        $return['slug'] [] = Rule::unique("blog_etc_posts", "slug");
+        $return['slug'] [] = Rule::unique("hessam_posts", "slug");
         return $return;
     }
 

@@ -121,7 +121,7 @@ class HessamPost extends Model implements SearchResultInterface
      */
     public function categories()
     {
-        return $this->belongsToMany(HessamCategory::class, 'blog_etc_post_categories');
+        return $this->belongsToMany(HessamCategory::class, 'hessam_post_categories');
     }
 
     /**

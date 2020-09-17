@@ -27,11 +27,11 @@ class HessamServiceProvider extends ServiceProvider
 
 
         foreach ([
-                     '2018_05_28_224023_create_blog_etc_posts_table.php',
-                     '2018_09_16_224023_add_author_and_url_blog_etc_posts_table.php',
-                     '2018_09_26_085711_add_short_desc_textrea_to_blog_etc.php',
-                     '2018_09_27_122627_create_blog_etc_uploaded_photos_table.php',
-                     '2020_05_27_104123_add_parameters_blog_etc_categories_table.php'
+                     '2018_05_28_224023_create_hessam_posts_table.php',
+                     '2018_09_16_224023_add_author_and_url_hessam_posts_table.php',
+                     '2018_09_26_085711_add_short_desc_textrea_to_hessam.php',
+                     '2018_09_27_122627_create_hessam_uploaded_photos_table.php',
+                     '2020_05_27_104123_add_parameters_hessam_categories_table.php'
                  ] as $file) {
 
             $this->publishes([
