@@ -1,11 +1,11 @@
-<?php namespace WebDevEtc\BlogEtc\Captcha;
+<?php namespace HessamDev\Hessam\Captcha;
 
 /**
  * Trait UsesCaptcha
  *
- * For instantiating the config("blogetc.captcha.captcha_type") object.
+ * For instantiating the config("hessam.captcha.captcha_type") object.
  *
- * @package WebDevEtc\BlogEtc\Captcha
+ * @package HessamDev\Hessam\Captcha
  */
 trait UsesCaptcha
 {
@@ -15,13 +15,13 @@ trait UsesCaptcha
      */
     private function getCaptchaObject()
     {
-        if (!config("blogetc.captcha.captcha_enabled")) {
+        if (!config("hessam.captcha.captcha_enabled")) {
             return null;
         }
 
         // else: captcha is enabled
         /** @var string $captcha_class */
-        $captcha_class = config("blogetc.captcha.captcha_type");
+        $captcha_class = config("hessam.captcha.captcha_type");
         return new $captcha_class;
     }
 

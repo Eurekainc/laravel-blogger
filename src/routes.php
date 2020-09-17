@@ -1,37 +1,37 @@
 <?php
 
-Route::group(['middleware' => ['web'], 'namespace' => '\WebDevEtc\BlogEtc\Controllers'], function () {
+Route::group(['middleware' => ['web'], 'namespace' => '\HessamDev\Hessam\Controllers'], function () {
 
 
     /** The main public facing blog routes - show all posts, view a category, rss feed, view a single post, also the add comment route */
-    Route::group(['prefix' => config('blogetc.blog_prefix', 'blog')], function () {
+    Route::group(['prefix' => config('hessam.blog_prefix', 'blog')], function () {
 
-        Route::get('/', 'BlogEtcReaderController@index')
-            ->name('blogetc.index');
+        Route::get('/', 'HessamReaderController@index')
+            ->name('hessam.index');
 
-        Route::get('/search', 'BlogEtcReaderController@search')
-            ->name('blogetc.search');
+        Route::get('/search', 'HessamReaderController@search')
+            ->name('hessam.search');
 
-        Route::get('/feed', 'BlogEtcRssFeedController@feed')
-            ->name('blogetc.feed'); //RSS feed
+        Route::get('/feed', 'HessamRssFeedController@feed')
+            ->name('hessam.feed'); //RSS feed
 
-        Route::get('/category{subcategories}', 'BlogEtcReaderController@view_category')->where('subcategories', '^[a-zA-Z0-9-_\/]+$')->name('blogetc.view_category');
+        Route::get('/category{subcategories}', 'HessamReaderController@view_category')->where('subcategories', '^[a-zA-Z0-9-_\/]+$')->name('hessam.view_category');
 
 //        Route::get('/category/{categorySlug}',
-//            'BlogEtcReaderController@view_category')
-//            ->name('blogetc.view_category');
+//            'HessamReaderController@view_category')
+//            ->name('hessam.view_category');
 
         Route::get('/{blogPostSlug}',
-            'BlogEtcReaderController@viewSinglePost')
-            ->name('blogetc.single');
+            'HessamReaderController@viewSinglePost')
+            ->name('hessam.single');
 
 
         // throttle to a max of 10 attempts in 3 minutes:
         Route::group(['middleware' => 'throttle:10,3'], function () {
 
             Route::post('save_comment/{blogPostSlug}',
-                'BlogEtcCommentWriterController@addNewComment')
-                ->name('blogetc.comments.add_new_comment');
+                'HessamCommentWriterController@addNewComment')
+                ->name('hessam.comments.add_new_comment');
 
 
         });
@@ -40,86 +40,86 @@ Route::group(['middleware' => ['web'], 'namespace' => '\WebDevEtc\BlogEtc\Contro
 
 
     /* Admin backend routes - CRUD for posts, categories, and approving/deleting submitted comments */
-    Route::group(['prefix' => config('blogetc.admin_prefix', 'blog_admin')], function () {
+    Route::group(['prefix' => config('hessam.admin_prefix', 'blog_admin')], function () {
 
-        Route::get('/', 'BlogEtcAdminController@index')
-            ->name('blogetc.admin.index');
+        Route::get('/', 'HessamAdminController@index')
+            ->name('hessam.admin.index');
 
         Route::get('/add_post',
-            'BlogEtcAdminController@create_post')
-            ->name('blogetc.admin.create_post');
+            'HessamAdminController@create_post')
+            ->name('hessam.admin.create_post');
 
 
         Route::post('/add_post',
-            'BlogEtcAdminController@store_post')
-            ->name('blogetc.admin.store_post');
+            'HessamAdminController@store_post')
+            ->name('hessam.admin.store_post');
 
 
         Route::get('/edit_post/{blogPostId}',
-            'BlogEtcAdminController@edit_post')
-            ->name('blogetc.admin.edit_post');
+            'HessamAdminController@edit_post')
+            ->name('hessam.admin.edit_post');
 
         Route::patch('/edit_post/{blogPostId}',
-            'BlogEtcAdminController@update_post')
-            ->name('blogetc.admin.update_post');
+            'HessamAdminController@update_post')
+            ->name('hessam.admin.update_post');
 
         //Removes post's photo
         Route::get('/remove_photo/{slug}',
-            'BlogEtcAdminController@remove_photo')
-            ->name('blogetc.admin.remove_photo');
+            'HessamAdminController@remove_photo')
+            ->name('hessam.admin.remove_photo');
 
         Route::group(['prefix' => "image_uploads",], function () {
 
-            Route::get("/", "BlogEtcImageUploadController@index")->name("blogetc.admin.images.all");
+            Route::get("/", "HessamImageUploadController@index")->name("hessam.admin.images.all");
 
-            Route::get("/upload", "BlogEtcImageUploadController@create")->name("blogetc.admin.images.upload");
-            Route::post("/upload", "BlogEtcImageUploadController@store")->name("blogetc.admin.images.store");
+            Route::get("/upload", "HessamImageUploadController@create")->name("hessam.admin.images.upload");
+            Route::post("/upload", "HessamImageUploadController@store")->name("hessam.admin.images.store");
 
         });
 
 
         Route::delete('/delete_post/{blogPostId}',
-            'BlogEtcAdminController@destroy_post')
-            ->name('blogetc.admin.destroy_post');
+            'HessamAdminController@destroy_post')
+            ->name('hessam.admin.destroy_post');
 
         Route::group(['prefix' => 'comments',], function () {
 
             Route::get('/',
-                'BlogEtcCommentsAdminController@index')
-                ->name('blogetc.admin.comments.index');
+                'HessamCommentsAdminController@index')
+                ->name('hessam.admin.comments.index');
 
             Route::patch('/{commentId}',
-                'BlogEtcCommentsAdminController@approve')
-                ->name('blogetc.admin.comments.approve');
+                'HessamCommentsAdminController@approve')
+                ->name('hessam.admin.comments.approve');
             Route::delete('/{commentId}',
-                'BlogEtcCommentsAdminController@destroy')
-                ->name('blogetc.admin.comments.delete');
+                'HessamCommentsAdminController@destroy')
+                ->name('hessam.admin.comments.delete');
         });
 
         Route::group(['prefix' => 'categories'], function () {
 
             Route::get('/',
-                'BlogEtcCategoryAdminController@index')
-                ->name('blogetc.admin.categories.index');
+                'HessamCategoryAdminController@index')
+                ->name('hessam.admin.categories.index');
 
             Route::get('/add_category',
-                'BlogEtcCategoryAdminController@create_category')
-                ->name('blogetc.admin.categories.create_category');
+                'HessamCategoryAdminController@create_category')
+                ->name('hessam.admin.categories.create_category');
             Route::post('/add_category',
-                'BlogEtcCategoryAdminController@store_category')
-                ->name('blogetc.admin.categories.store_category');
+                'HessamCategoryAdminController@store_category')
+                ->name('hessam.admin.categories.store_category');
 
             Route::get('/edit_category/{categoryId}',
-                'BlogEtcCategoryAdminController@edit_category')
-                ->name('blogetc.admin.categories.edit_category');
+                'HessamCategoryAdminController@edit_category')
+                ->name('hessam.admin.categories.edit_category');
 
             Route::patch('/edit_category/{categoryId}',
-                'BlogEtcCategoryAdminController@update_category')
-                ->name('blogetc.admin.categories.update_category');
+                'HessamCategoryAdminController@update_category')
+                ->name('hessam.admin.categories.update_category');
 
             Route::delete('/delete_category/{categoryId}',
-                'BlogEtcCategoryAdminController@destroy_category')
-                ->name('blogetc.admin.categories.destroy_category');
+                'HessamCategoryAdminController@destroy_category')
+                ->name('hessam.admin.categories.destroy_category');
 
         });
 

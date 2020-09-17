@@ -42,18 +42,18 @@
     },
     "autoload": {
         "psr-4": {
-            "WebDevEtc\\BlogEtc\\": "src"
+            "HessamDev\\Hessam\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "WebDevEtc\\BlogEtc\\Tests\\": "tests"
+            "HessamDev\\Hessam\\Tests\\": "tests"
         }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "WebDevEtc\\BlogEtc\\BlogEtcServiceProvider"
+                "HessamDev\\Hessam\\HessamServiceProvider"
             ],
             "aliases": {
             }

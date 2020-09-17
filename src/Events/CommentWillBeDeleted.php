@@ -1,28 +1,28 @@
 <?php
 
-namespace WebDevEtc\BlogEtc\Events;
+namespace HessamDev\Hessam\Events;
 
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Broadcasting\InteractsWithSockets;
-use WebDevEtc\BlogEtc\Models\BlogEtcComment;
+use HessamDev\Hessam\Models\HessamComment;
 
 /**
  * Class CommentWillBeDeleted
- * @package WebDevEtc\BlogEtc\Events
+ * @package HessamDev\Hessam\Events
  */
 class CommentWillBeDeleted
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
-    /** @var  BlogEtcComment */
+    /** @var  HessamComment */
     public $comment;
 
     /**
      * CommentWillBeDeleted constructor.
-     * @param BlogEtcComment $comment
+     * @param HessamComment $comment
      */
-    public function __construct(BlogEtcComment $comment)
+    public function __construct(HessamComment $comment)
     {
         $this->comment=$comment;
     }

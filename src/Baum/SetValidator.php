@@ -1,5 +1,5 @@
 <?php
-namespace WebDevEtc\BlogEtc\Baum;
+namespace HessamDev\Hessam\Baum;
 
 use Illuminate\Database\Capsule\Manager as Capsule;
 
@@ -8,14 +8,14 @@ class SetValidator {
   /**
   * Node instance for reference
   *
-  * @var \WebDevEtc\BlogEtc\Baum\Node
+  * @var \HessamDev\Hessam\Baum\Node
   */
   protected $node = NULL;
 
   /**
-   * Create a new \WebDevEtc\BlogEtc\Baum\SetValidator class instance.
+   * Create a new \HessamDev\Hessam\Baum\SetValidator class instance.
    *
-   * @param   \WebDevEtc\BlogEtc\Baum\Node      $node
+   * @param   \HessamDev\Hessam\Baum\Node      $node
    * @return  void
    */
   public function __construct($node) {
@@ -207,7 +207,7 @@ class SetValidator {
    * Builds a single string for the given scope columns values. Useful for
    * making array keys for grouping.
    *
-   * @param WebDevEtc\BlogEtc\Baum\Node   $node
+   * @param HessamDev\Hessam\Baum\Node   $node
    * @return string
    */
   protected function keyForScope($node) {

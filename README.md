@@ -47,7 +47,7 @@ To see package on Packagist click this [Link](https://packagist.org/packages/hes
 
 ## What this package is NOT for:
 
- - Sites where you want your (normal, non-admin) users to write blog posts. You must set `canManageBlogEtcPosts()` on your user model to ONLY allow trusted users.
+ - Sites where you want your (normal, non-admin) users to write blog posts. You must set `canManageHessamPosts()` on your user model to ONLY allow trusted users.
 
 ## Features
 
@@ -81,8 +81,8 @@ To see package on Packagist click this [Link](https://packagist.org/packages/hes
   - Create / edit post categories
   - Manage (approve/delete) submitted comments
 - Allows each blog post to have featured images uploaded (you can define the actual dimensions) - in large, medium, thumbnail sizes
-- fully configurable via its `config/blogetc.php` config file.
-- **Includes all required view files, works straight away with no additional setup.** All view files (Blade files) use Bootstrap 4, and very clean HTML (easy to get your head around). You can easily override any view file by putting files in your `/resources/views/vendor/blogetc/` directory
+- fully configurable via its `config/hessam.php` config file.
+- **Includes all required view files, works straight away with no additional setup.** All view files (Blade files) use Bootstrap 4, and very clean HTML (easy to get your head around). You can easily override any view file by putting files in your `/resources/views/vendor/hessam/` directory
 - **Built in comments (using the database)**, can auto approve or require admin approval (comment moderation).
   - Other options include using [Disqus](http://disqus.com/) comments or disabling comments.
 - Includes unit tests.
@@ -91,33 +91,33 @@ To see package on Packagist click this [Link](https://packagist.org/packages/hes
    - install with composer,
    - do the database migration, copy the config file over (done with `php artisan vendor:publish`)
    - chmod/chown the `public/blog_images/` directory so featured images can be uploaded for each blog post
-   - and then add 1 method to your `\App\User` file (`canManageBlogEtcPosts()`
+   - and then add 1 method to your `\App\User` file (`canManageHessamPosts()`
    - __but please see the install instructions to get everything up and working__
 
 ## Important notes
 
-1) Anyone who can manage blog posts (defined by the `canManageBlogEtcPosts()` method you add to your User model) can submit any HTML which is echoed out. This is a security issue. If you don't trust the content you should add a custom view and escape the blog content before echoing it, and set `use_custom_view_files` in the config to false.
+1) Anyone who can manage blog posts (defined by the `canManageHessamPosts()` method you add to your User model) can submit any HTML which is echoed out. This is a security issue. If you don't trust the content you should add a custom view and escape the blog content before echoing it, and set `use_custom_view_files` in the config to false.
 
 2) if `use_custom_view_files` is enabled in the config (which it is by default), it means that any post with a custom view file set (details in the docs) can include any file within `/resources/views/custom_blog_posts`, which blade will execute. This package gives no method to edit any file within that directory though.
 
 
 ## How to customise the blog views/templates
 
-After doing the correct `vendor:publish`, all of the default template files will be found in /resources/views/vendor/blogetc/ and are easy to edit to match your needs.
+After doing the correct `vendor:publish`, all of the default template files will be found in /resources/views/vendor/hessam/ and are easy to edit to match your needs.
 
 ### Customizing admin views
 If you need to customize the admin view, just copy the files from
-`vendor/webdevetc/blogetc/src/Views/blogetc_admin`
+`vendor/hessamdev/hessam/src/Views/hessam_admin`
 to
-`resources/views/vendor/blogetc_admin`
+`resources/views/vendor/hessam_admin`
 Then you can modify them just like any other view file.
 
 ## Routes
 
-It will auto set all required routes (both public facing, and admin backend). There are some config options (such as changing the /blog/ url to something else), which can be done in the blogetc.php file.
+It will auto set all required routes (both public facing, and admin backend). There are some config options (such as changing the /blog/ url to something else), which can be done in the hessam.php file.
 
 ## Config options
-All config options have comments which describe what they do. Please just refer to the `blogetc.php` file in your /config/ dir.
+All config options have comments which describe what they do. Please just refer to the `hessam.php` file in your /config/ dir.
 
 ### Custom User Model
 You can change the default user model through the config file
@@ -169,7 +169,7 @@ Try adding this to config/app.php:
 - 3.0.2                 - fixed default medium image size (changed to 600x400)
 - 3.0.1                 - replaced all short tags (<?) with full opening ones (<?php)
 - 3.0                   - Added separate functionality for uploading images (and save some meta data in db)
-- 2.1                   - added 'short_description' to db + form, and BlogEtcPost::generate_introduction() method will try and use this to generate intro text.
+- 2.1                   - added 'short_description' to db + form, and HessamPost::generate_introduction() method will try and use this to generate intro text.
 - 2.0                   - added full text search (enable it via the config file - it is disabled by default).
 - 1.2                   - added WYSIWYG, few smaller changes
 - 1.1.1                 - added basic captcha

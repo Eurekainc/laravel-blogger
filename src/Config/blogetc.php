@@ -10,7 +10,7 @@ return [
     // reading progress bar is the bar which shows on top of your post when you are scrolling down the page. You can disable this feature if you want
     'reading_progress_bar' => true,
 
-    'include_default_routes' => true, // set to false to not include routes.php for BlogEtcReaderController and admin related routes. Default: true. If you disable this, you will have to manually copy over the data from routes.php and add it to your web.php.
+    'include_default_routes' => true, // set to false to not include routes.php for HessamReaderController and admin related routes. Default: true. If you disable this, you will have to manually copy over the data from routes.php and add it to your web.php.
 
     'blog_prefix' => "blog", // used in routes.php. If you want to your http://yoursite.com/latest-news (or anything else), then enter that here. Default: blog
     'admin_prefix' => "blog_admin", // similar to above, but used for the admin panel for the blog. Default: blog_admin
@@ -25,7 +25,7 @@ return [
 
 
     'memory_limit' => '2048M', // This is used when uploading images :
-    //                              @ini_set('memory_limit', config("blogetc.memory_limit"));
+    //                              @ini_set('memory_limit', config("hessam.memory_limit"));
     //                            See PHP.net for detailso
     //                            Set to false to not set any value.
 
@@ -114,7 +114,7 @@ return [
 
     'captcha' => [
         'captcha_enabled' => true, // true = we should use a captcha, false = turn it off. If comments are disabled this makes no difference.
-        'captcha_type' => \WebDevEtc\BlogEtc\Captcha\Basic::class, // this should be a class that implements the \WebDevEtc\BlogEtc\Interfaces\CaptchaInterface interface
+        'captcha_type' => \HessamDev\Hessam\Captcha\Basic::class, // this should be a class that implements the \HessamDev\Hessam\Interfaces\CaptchaInterface interface
         'basic_question' => "What is the opposite of white?", // a simple captcha question to always ask (if captcha_type is set to 'basic'
         'basic_answers' => "black,dark", // comma separated list of possible answers. Don't worry about case.
     ],
@@ -140,7 +140,7 @@ return [
         // options:
         //      'built_in' (default, uses own database for comments),
         //      'disqus' (uses https://disqus.com/, please enter further config options below),
-        //      'custom' (will load blogetc::partials.custom_comments, which you can copy to your vendor view dir to customise
+        //      'custom' (will load hessam::partials.custom_comments, which you can copy to your vendor view dir to customise
         //      'disabled' (turn comments off)
         'type_of_comments_to_show' => 'built_in', // default: built_in
 

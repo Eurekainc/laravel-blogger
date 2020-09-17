@@ -1,8 +1,8 @@
-<?php namespace WebDevEtc\BlogEtc\Captcha;
+<?php namespace HessamDev\Hessam\Captcha;
 
 use Illuminate\Http\Request;
-use WebDevEtc\BlogEtc\Interfaces\CaptchaInterface;
-use WebDevEtc\BlogEtc\Models\BlogEtcPost;
+use HessamDev\Hessam\Interfaces\CaptchaInterface;
+use HessamDev\Hessam\Models\HessamPost;
 
 abstract class CaptchaAbstract implements CaptchaInterface
 {
@@ -12,11 +12,11 @@ abstract class CaptchaAbstract implements CaptchaInterface
      * executed when viewing single post
      *
      * @param Request $request
-     * @param BlogEtcPost $blogEtcPost
+     * @param HessamPost $hessamPost
      *
      * @return void
      */
-    public function runCaptchaBeforeShowingPosts(Request $request, BlogEtcPost $blogEtcPost)
+    public function runCaptchaBeforeShowingPosts(Request $request, HessamPost $hessamPost)
     {
         // no code here to run! Maybe in your subclass you can make use of this?
         /*
@@ -37,11 +37,11 @@ abstract class CaptchaAbstract implements CaptchaInterface
      * executed when posting new comment
      *
      * @param Request $request
-     * @param BlogEtcPost $blogEtcPost
+     * @param HessamPost $hessamPost
      *
      * @return void
      */
-    public function runCaptchaBeforeAddingComment(Request $request, BlogEtcPost $blogEtcPost)
+    public function runCaptchaBeforeAddingComment(Request $request, HessamPost $hessamPost)
     {
         // no code here to run! Maybe in your subclass you can make use of this?
     }
